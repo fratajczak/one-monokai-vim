@@ -59,6 +59,4 @@ If you are using a font that supports italic, paste the command below in your `.
 Screenshots
 -----------
 
-![javascript](screenshots/javascript.png)
-
-![html](screenshots/html.png)
+![c](screenshots/c.png)
