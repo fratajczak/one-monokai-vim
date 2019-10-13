@@ -336,3 +336,73 @@ call s:h("cStructure",                  { "fg": s:aqua})
 call s:h("cStorageClass",               { "fg": s:pink})
 call s:h("cInclude",                    { "fg": s:pink})
 call s:h("cDefine",                     { "fg": s:pink})
+
+"Operator Highlighting (from https://github.com/Valloric/vim-operator-highlight)
+"-------------------
+
+if exists( 'g:loaded_operator_highlight' )
+  finish
+else
+  let g:loaded_operator_highlight = 1
+endif
+
+if !exists( 'g:ophigh_color_gui' )
+  let g:ophigh_color_gui = "#E06C75"
+endif
+
+if !exists( 'g:ophigh_highlight_link_group' )
+  let g:ophigh_highlight_link_group = ""
+endif
+
+
+if !exists( 'g:ophigh_color' )
+  let g:ophigh_color = "168"
+endif
+
+if !exists( 'g:ophigh_filetypes_to_ignore' )
+  let g:ophigh_filetypes_to_ignore = {}
+endif
+
+fun! s:IgnoreFiletypeIfNotSet( file_type )
+  if get( g:ophigh_filetypes_to_ignore, a:file_type, 1 )
+    let g:ophigh_filetypes_to_ignore[ a:file_type ] = 1
+  endif
+endfunction
+
+call s:IgnoreFiletypeIfNotSet('help')
+call s:IgnoreFiletypeIfNotSet('markdown')
+call s:IgnoreFiletypeIfNotSet('qf') " This is for the quickfix window
+call s:IgnoreFiletypeIfNotSet('conque_term')
+call s:IgnoreFiletypeIfNotSet('diff')
+call s:IgnoreFiletypeIfNotSet('html')
+call s:IgnoreFiletypeIfNotSet('css')
+call s:IgnoreFiletypeIfNotSet('less')
+call s:IgnoreFiletypeIfNotSet('xml')
+call s:IgnoreFiletypeIfNotSet('sh')
+call s:IgnoreFiletypeIfNotSet('bash')
+call s:IgnoreFiletypeIfNotSet('notes')
+call s:IgnoreFiletypeIfNotSet('jinja')
+
+fun! s:HighlightOperators()
+  if get( g:ophigh_filetypes_to_ignore, &filetype, 0 )
+    return
+  endif
+
+  " for the last element of the regex, see :h /\@!
+  " basically, searching for "/" is more complex since we want to avoid
+  " matching against "//" or "/*" which would break C++ comment highlighting
+  syntax match OperatorChars "?\|+\|-\|\*\|:\|<\|>\|&\||\|\^\|!\|\~\|%\|=\|/\(/\|*\)\@!"
+
+
+
+  if g:ophigh_highlight_link_group != "" 
+    exec "hi link OperatorChars " . g:ophigh_highlight_link_group
+  else
+    exec "hi OperatorChars guifg=" . g:ophigh_color_gui . " gui=NONE"
+    exec "hi OperatorChars ctermfg=" . g:ophigh_color . " cterm=NONE"
+  endif
+
+endfunction
+
+au Syntax * call s:HighlightOperators()
+au ColorScheme * call s:HighlightOperators()
