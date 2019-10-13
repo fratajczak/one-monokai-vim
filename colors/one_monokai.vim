@@ -1,4 +1,4 @@
-" File:       one-monokai.vim
+" File:       one_monokai.vim
 " Maintainer: Ferdinand Ratajczak (fratajczak)
 " URL:        https://github.com/fratajczak/one-one_monokai-vim
 " License:    MIT
