@@ -117,8 +117,8 @@ call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": 
 call s:h("WarningMsg",    { "fg": s:red })
 call s:h("VertSplit",     { "fg": s:darkerblack,   "bg": s:black})
 call s:h("LineNr",        { "fg": s:grey,       "bg": s:black})
-call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
-call s:h("SignColumn",    {                     "bg": s:lightblack })
+call s:h("CursorLineNr",  { "fg": s:white,     "bg": s:black})
+call s:h("SignColumn",    {                     "bg": s:black})
 
 " misc
 call s:h("SpecialKey",    { "fg": s:pink })
