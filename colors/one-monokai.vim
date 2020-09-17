@@ -68,8 +68,8 @@ endfunction
 " --------
 
 
-let s:white       = { "gui": "#BABAB1", "cterm": "145" }
-let s:black       = { "gui": "#2C3037", "cterm": "23" }
+let s:white       = { "gui": "#ABB2BF", "cterm": "145" }
+let s:black       = { "gui": "#282C34", "cterm": "23" }
 let s:lightblack  = { "gui": "#2D2E27", "cterm": "235" }
 let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }
 let s:darkblack   = { "gui": "#26292F", "cterm": "16" }
@@ -148,7 +148,7 @@ call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 call s:h("Constant",      { "fg": s:purple })
 call s:h("Number",        { "fg": s:purple })
 call s:h("Float",         { "fg": s:purple })
-call s:h("Boolean",       { "fg": s:purple })
+call s:h("Boolean",       { "fg": s:aqua })
 call s:h("Character",     { "fg": s:yellow })
 call s:h("String",        { "fg": s:yellow })
 
